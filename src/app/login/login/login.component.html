@@ -1,0 +1,42 @@
+
+<div class="container" id="container">
+	<div class="form-container sign-in-container">
+    <div class="overlay">
+			<div class="overlay-panel overlay-right">
+				<img src="https://cdn.pixabay.com/photo/2018/08/10/12/03/school-tools-3596686_960_720.jpg" alt="">
+			</div>
+		</div>
+	</div>
+	<div class="overlay-container">
+		<form [formGroup] = "form" (submit)="save($event)">
+      <h3><i class="fas fa-user"></i>Iniciar Sesión</h3><br><br>
+          <input  type="text" formControlName="email"  class="form-control" placeholder="Email"  [class.is-valid]="emailFieldIsValid" [class.is-invalid]="emailFieldIsInvalid">        
+            <div class="invalid-feedback" *ngIf="emailField.hasError('required')">
+              No debe estar el campo vacio
+            </div>
+            <div class="invalid-feedback" *ngIf="emailField.hasError('email')">
+              El email esta incorrecto
+            </div>
+            <div class="invalid-feedback" *ngIf="emailField.hasError('notAvailable')">
+              Ya existe este correo
+            </div>
+          <input  type="password" formControlName="password"  class="form-control" placeholder="Password"  [class.is-valid]="passwordFieldIsValid" [class.is-invalid]="passwordFieldIsInvalid">  
+          <div class="invalid-feedback"  *ngIf="passwordField.hasError('required')">
+            El password esta vacio
+          </div>
+          <div class="invalid-feedback"  *ngIf="passwordField.hasError('notPasswordCorrect')">
+            El password no es correcto
+          </div>
+          <div class="valid-feedback"  *ngIf="passwordField.hasError('notPasswordCorrect')">
+            El password es correcto
+          </div>
+          
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+            <label class="custom-control-label" for="defaultUnchecked">Recuerdame</label>
+          </div>
+          <button type="submit">Acceder</button>
+       <p>¿No tienes Cuenta?<a routerLink="/registro" >Crear Cuenta</a></p>
+		</form>
+	</div>
+</div>
