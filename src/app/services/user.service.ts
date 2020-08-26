@@ -12,14 +12,14 @@ export class UserService {
 
   checkEmail(email:string)
   {
-    return of({ isEmailAviable: email !== 'usuario@gmail.com'})
+    return of({ EmailCorrect: email == 'usuario@gmail.com'})
     .pipe(
       delay(500)
     );
   }
 
   checkPassword(password: string){
-    return of({ PasswordCorrect: password == 'usuario1234'})
+    return of({ PasswordCorrect: password == 'usuario1234' })
     .pipe( delay(500));
   }
 

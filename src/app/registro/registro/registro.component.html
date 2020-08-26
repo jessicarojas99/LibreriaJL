@@ -11,34 +11,34 @@
       <h3><i class="fas fa-user"></i>Registrarse</h3><br>
 	  <input  type="text" formControlName="name"  class="form-control" placeholder="Nombre"  [class.is-valid]="nameFieldIsValid" [class.is-invalid]="nameFieldIsInvalid">        
 	  <div class="invalid-feedback" *ngIf="nameField.hasError('required')">
-		  No debe estar el campo vacio
+		El campo es obligatorio.
 	  </div>
 	  <div class="invalid-feedback" *ngIf="nameField.value.length">
-		El numero de caracteres debe ser un minimo de 3 y maximo de 15
+		El numero de caracteres debe ser un minimo de 3 y maximo 15
 	</div>
 	  <input  type="text" formControlName="email"  class="form-control" placeholder="Email"  [class.is-valid]="emailFieldIsValid" [class.is-invalid]="emailFieldIsInvalid">        
 		<div class="invalid-feedback" *ngIf="emailField.hasError('required')">
-			No debe estar el campo vacio
+			El campo es obligatorio.
 		</div>
 		<div class="invalid-feedback" *ngIf="emailField.hasError('email')">
-			El email esta incorrecto
+			El correo no tiene el formato correcto
 		</div>
 		<div class="invalid-feedback" *ngIf="emailField.hasError('notAvailable')">
-			Ya existe este correo
+			El siguiente correo ya existe 
 		</div>
 	  <input  type="password" formControlName="password"  class="form-control" placeholder="Password"  [class.is-valid]="passwordFieldIsValid" [class.is-invalid]="passwordFieldIsInvalid">  
 		<div class="invalid-feedback"  *ngIf="passwordField.hasError('required')">
-		El password esta vacio
+			El campo es obligatorio
 		</div>
-		<div class="invalid-feedback"  *ngIf="passwordField.hasError('notPasswordCorrect')">
-		El password no es correcto
+		<div class="invalid-feedback"  *ngIf="passwordField.hasError('minlenght')">
+			El campo es obligatorio
 		</div>
-		<div class="valid-feedback"  *ngIf="passwordField.hasError('notPasswordCorrect')">
-		El password es correcto
+		<input  type="password" formControlName="confirmarpassword"  class="form-control" placeholder="Confirmar Password"  [class.is-valid]="confirmarpasswordFieldIsValid" [class.is-invalid]="confirmarpasswordFieldIsInvalid">  
+		<div class="invalid-feedback"  *ngIf="confirmarpasswordField.hasError('required')">
+			El campo es obligatorio
 		</div>
-	   <input type="password" placeholder="Confirmar Password">   
-	   <div class="invalid-feedback"  *ngIf="confirmarpasswordField.hasError('required')">
-			El password esta vacio
+		<div class="invalid-feedback" *ngIf="form.get('confirmarpassword').hasError('noiguales')">
+			los password no son iguales
 		</div>
 		<button>Crear Cuenta</button>
 		<p>¿Tienes una cuenta?<a routerLink="/login" >Iniciar Sesión</a></p>
