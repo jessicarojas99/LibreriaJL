@@ -7,13 +7,35 @@
 
 <section id="contact-form">
 
-        <form [formGroup] = "form" id="contact" name="contact" accept-charset="utf-8">
+        <form [formGroup] = "form" id="contact" name="contact" accept-charset="utf-8"  (submit)="save($event)">
             <h1>Contactanos</h1>
-         <input name="name" type="text" placeholder="Nombre">
-         <input name="email" type="email" placeholder="Email">
-         <input name="asunto" type="text" placeholder="Asunto">
-          <textarea name="message" placeholder="Mensaje"></textarea>
-          <input name="submit" type="submit" value="Enviar">
+         <input name="name" class="form-control" type="text" placeholder="Nombre"  formControlName="name" [class.is-valid]="nameFieldIsValid"
+         [class.is-invalid]="nameFieldIsInvalid">
+         <div class="invalid-feedback" *ngIf="nameField.hasError('required')">
+            El campo es obligatorio
+          </div>
+         <input name="email" class="form-control" type="email" placeholder="Email" formControlName="email"  [class.is-valid]="emailFieldIsValid"
+         [class.is-invalid]="emailFieldIsInvalid">
+         <div class="invalid-feedback" *ngIf="emailField.hasError('required')">
+            El campo es obligatorio.
+           </div>
+           <div class="invalid-feedback" *ngIf="emailField.hasError('email')">
+             El correo no es correcto.
+           </div>
+         <input name="asunto" class="form-control"  type="text" placeholder="Asunto" formControlName="asunto"  [class.is-valid]="asuntoFieldIsValid"
+         [class.is-invalid]="asuntoFieldIsInvalid">
+         <div class="invalid-feedback" *ngIf="asuntoField.hasError('required')">
+            El campo es obligatorio
+          </div>
+          <textarea name="message" class="form-control"  placeholder="Mensaje" formControlName="message" [class.is-valid]="messageFieldIsValid"
+          [class.is-invalid]="messageFieldIsInvalid" ></textarea>
+          <div class="invalid-feedback" *ngIf="messageField.hasError('required')">
+            El campo es obligatorio
+          </div>
+          <div class="invalid-feedback"  *ngIf="messageField.hasError('minlength')">
+            El message debe ser de 8 caracteres
+          </div>
+          <input name="submit" type="submit" value="Enviar ">
         </form>
     <aside>
         <section class="calendario">
