@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule, Route} from '@angular/router';
+import { RouterModule, Route } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav/nav.component';
 import { InicioComponent } from './inicio/inicio/inicio.component';
@@ -9,18 +9,20 @@ import { AboutComponent } from './about/about/about.component';
 import { LoginComponent } from './login/login/login.component';
 import { RegistroComponent } from './registro/registro/registro.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { InformacionproductoComponent } from './informacionproducto/informacionproducto.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { ProductosComponent } from './productos/productos.component';
 
-const routes: Route[]=[
-  { path:'', component: InicioComponent},
-  { path:'about', component: AboutComponent},
-  { path:'login', component: LoginComponent},
-  { path:'registro', component: RegistroComponent},
-  { path:'carrito', component: CarritoComponent},
-  { path:'contacto', component: ContactoComponent}
+const routes: Route[] = [
+  { path: '', component: InicioComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'registro', component: RegistroComponent },
+  { path: 'carrito', component: CarritoComponent },
+  { path: 'contacto', component: ContactoComponent },
+  { path: 'productos', component: ProductosComponent },
 ];
 @NgModule({
   declarations: [
@@ -33,15 +35,16 @@ const routes: Route[]=[
     RegistroComponent,
     InformacionproductoComponent,
     CarritoComponent,
-    ContactoComponent
+    ContactoComponent,
+    ProductosComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
