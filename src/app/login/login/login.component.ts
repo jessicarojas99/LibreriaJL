@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
       get emailFieldIsInvalid(){
         return this.emailField.touched && this.emailField.invalid;
       }
+      
       get passwordField(){
         return this.form.get('password');
       }
