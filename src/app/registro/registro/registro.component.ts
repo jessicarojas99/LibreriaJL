@@ -4,6 +4,7 @@ import {debounceTime} from 'rxjs/operators';
 import { MyValidations } from 'src/app/utils/my-validations';
 import { UserService } from 'src/app/services/user.service';
 
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -22,9 +23,9 @@ export class RegistroComponent implements OnInit {
   private buildForm(){
     this.form= this.formBuilder.group({
       name:['',[Validators.required,Validators.minLength(3),Validators.maxLength(18)]],
-      email: ['',[Validators.required, Validators.email],MyValidations.validateEmail(this.userService)],
+      email: ['',[Validators.required, Validators.email]],
       password:['',[Validators.required,Validators.minLength(5),]],
-      confirmarpassword:['',Validators.required,MyValidations.validatePassword(this.userService) ],       
+      confirmarpassword:['',Validators.required],       
     });
   }
 
@@ -38,6 +39,8 @@ export class RegistroComponent implements OnInit {
       this.form.markAllAsTouched();
     }       
   }
+
+
   get nameField(){
     return this.form.get('name');
   }

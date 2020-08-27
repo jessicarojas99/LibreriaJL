@@ -17,42 +17,35 @@
         type="text"
         formControlName="email"
         class="form-control"
+        name="email"
         placeholder="Email"
         [class.is-valid]="emailFieldIsValid"
         [class.is-invalid]="emailFieldIsInvalid"
+        id="email"
       />
       <div class="invalid-feedback" *ngIf="emailField.hasError('required')">
-        No debe estar el campo vacio
+       El campo es obligatorio.
       </div>
       <div class="invalid-feedback" *ngIf="emailField.hasError('email')">
-        El email esta incorrecto
-      </div>
-      <div class="invalid-feedback" *ngIf="emailField.hasError('notAvailable')">
-        Ya existe este correo
+        El correo no es correcto.
       </div>
       <input
         type="password"
+        name="password"
         formControlName="password"
         class="form-control"
         placeholder="Password"
         [class.is-valid]="passwordFieldIsValid"
         [class.is-invalid]="passwordFieldIsInvalid"
+        id="password"
       />
       <div class="invalid-feedback" *ngIf="passwordField.hasError('required')">
-        El password esta vacio
+        El campo es obligatorio
       </div>
-      <div
-        class="invalid-feedback"
-        *ngIf="passwordField.hasError('notPasswordCorrect')"
-      >
-        El password no es correcto
+      <div class="invalid-feedback"  *ngIf="passwordField.hasError('minlength')">
+        La contrasenia debe ser de 8 caracteres
       </div>
-      <div
-        class="valid-feedback"
-        *ngIf="passwordField.hasError('notPasswordCorrect')"
-      >
-        El password es correcto
-      </div>
+    
 
       <div class="custom-control custom-checkbox">
         <input
@@ -64,7 +57,7 @@
           >Recuerdame</label
         >
       </div>
-      <button type="submit">Acceder</button>
+      <button type="submit" onclick="validacionusuario()">Acceder</button>
       <p>¿No tienes Cuenta?<a routerLink="/registro">Crear Cuenta</a></p>
     </form>
   </div>
