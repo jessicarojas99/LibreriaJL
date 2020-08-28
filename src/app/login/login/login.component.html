@@ -13,6 +13,7 @@
     <form [formGroup]="form" (submit)="save($event)">
       <h4><i class="fas fa-user"></i>Iniciar Sesión</h4>
       <br /><br />
+      <label for="login" id="logLabel"></label>
       <input
         type="text"
         formControlName="email"
@@ -24,7 +25,7 @@
         id="email"
       />
       <div class="invalid-feedback" *ngIf="emailField.hasError('required')">
-       El campo es obligatorio.
+        El campo es obligatorio.
       </div>
       <div class="invalid-feedback" *ngIf="emailField.hasError('email')">
         El correo no es correcto.
@@ -42,11 +43,12 @@
       <div class="invalid-feedback" *ngIf="passwordField.hasError('required')">
         El campo es obligatorio
       </div>
-      <div class="invalid-feedback"  *ngIf="passwordField.hasError('minlength')">
-        La contrasenia debe ser de 8 caracteres
+      <div class="invalid-feedback" *ngIf="passwordField.hasError('minlength')">
+        La contraseña debe ser de 8 caracteres
       </div>
-    
-
+      <div class="invalid-feedback" *ngIf="passwordField.hasError('pattern')">
+        La contraseña no debe contener caracteres especiales
+      </div>
       <div class="custom-control custom-checkbox">
         <input
           type="checkbox"
@@ -57,7 +59,7 @@
           >Recuerdame</label
         >
       </div>
-      <button type="submit">Acceder</button>
+      <button type="submit" onclick="validacionusuario()">Acceder</button>
       <p>¿No tienes Cuenta?<a routerLink="/registro">Crear Cuenta</a></p>
     </form>
   </div>
